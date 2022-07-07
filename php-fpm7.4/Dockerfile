@@ -16,4 +16,5 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-enable redis \
     && wget "https://install.phpcomposer.com/composer.phar" \
     && chmod +x composer.phar \
-    && mv composer.phar /usr/local/bin/composer
+    && mv composer.phar /usr/local/bin/composer \
+    && cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
