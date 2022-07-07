@@ -7,6 +7,8 @@ RUN apt-get update && apt-get install -y \
         net-tools \
         iputils-ping \
         wget \
+        curl \
+        htop \
 	&& docker-php-ext-configure gd --with-freetype --with-jpeg \
 	&& docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install bcmath \
