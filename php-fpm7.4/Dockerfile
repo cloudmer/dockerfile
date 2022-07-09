@@ -26,10 +26,14 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list-bak \
             curl \
             htop \
             git \
+            unzip \
 	&& docker-php-ext-configure gd --with-freetype --with-jpeg \
 	&& docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install zip \
     && docker-php-ext-install bcmath \
+    && docker-php-ext-install tokenizer \
+    && docker-php-ext-install mysqli \
+    && docker-php-ext-install pdo_mysql \
     && pecl install redis \
     && docker-php-ext-enable redis \
     && wget "https://mirrors.aliyun.com/composer/composer.phar" \
