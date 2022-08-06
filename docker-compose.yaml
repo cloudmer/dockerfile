@@ -65,7 +65,7 @@ services:
       - /Users/cloud/workspace/wwwroot:/home
     # 网络
     networks:
-      - local_dev_env_network  
+      - local_dev_env_network
   # php-fpm74 服务
   php-fpm74:
     image: cloudmer/php-fpm:7.4.30
@@ -77,6 +77,23 @@ services:
     volumes:
       # php-fpm 挂载目录
       - /Users/cloud/workspace/wwwroot:/var/www/html
+    # 网络
+    networks:
+      - local_dev_env_network
+  # minio
+  minio:
+    image: minio/minio:latest
+    restart: always
+    container_name: minio
+    command: server /data --console-address :9001
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: root
+      MINIO_ROOT_PASSWORD: cloudmer
+    volumes:
+      - /Users/cloud/workspace/docker/volumes/minio/data:/data
     # 网络
     networks:
       - local_dev_env_network
